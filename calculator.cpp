@@ -104,7 +104,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		return 0;
 	} /* A 'HANDLE', hence the H, or a pointer to our window */
 	
-	hwnd = CreateWindowEx(WS_EX_CLIENTEDGE,"My Calculator","My calculator",WS_VISIBLE|WS_OVERLAPPEDWINDOW | WS_CAPTION | WS_SYSMENU,
+	hwnd = CreateWindowEx(WS_EX_CLIENTEDGE,"My Calculator","My calculator",WS_VISIBLE|WS_OVERLAPPED | WS_SYSMENU,
 		CW_USEDEFAULT, /* x */
 		CW_USEDEFAULT, /* y */
 		250, /* width */
@@ -116,11 +116,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		return 0;
 	}
 
-	/*
-		This is the heart of our program where all input is processed and 
-		sent to WndProc. Note that GetMessage blocks code flow until it receives something, so
-		this loop will not produce unreasonably high CPU usage
-	*/
 	MSG msg;
 	while(GetMessage(&msg, NULL, 0, 0) > 0) { /* If no error is received... */
 		TranslateMessage(&msg); /* Translate key codes to chars if present */
